@@ -6,12 +6,15 @@
   <el-form-item label="课程名称" prop="courseName">
     <el-input v-model="ruleForm.courseName"></el-input>
   </el-form-item>
-   <el-form-item label="课程地址" prop="courseAddress">
+  <el-form-item label="课程地址" prop="courseAddress">
     <el-input placeholder="请输入课程地址" v-model="ruleForm.courseAddress"></el-input>
-  </el-form-item> 
-    <el-form-item label="人数" prop="totalNum">
+  </el-form-item>
+  <el-form-item label="人数" prop="totalNum">
     <el-input placeholder="请输入人数" v-model="ruleForm.totalNum" ></el-input>
-  </el-form-item>  
+  </el-form-item>
+  <el-form-item label="课程金额" prop="money">
+     <el-input placeholder="请输入课程金额" v-model="ruleForm.money" ></el-input>
+  </el-form-item>
   <el-form-item>
     <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
     <el-button @click="resetForm('ruleForm')">重置</el-button>
@@ -46,7 +49,8 @@ function validateAlphabets(str) {
         ruleForm: {
           courseName: '',
           courseAddress: '',
-          totalNum: ''
+          totalNum: '',
+          money :''
         },
         file: null,
         file1: null,
@@ -61,7 +65,10 @@ function validateAlphabets(str) {
           ],
           totalNum: [
             { required: true, message: '请输入人数', trigger: 'blur' },
-          ]
+          ],
+          money: [
+            { required: true, message: '请输入课程金额', trigger: 'blur' },
+          ],
         }
       };
     },
@@ -84,6 +91,7 @@ function validateAlphabets(str) {
              courseName: String(that.ruleForm.courseName),
              courseAddress: String(that.ruleForm.courseAddress),
              totalNum: Number(that.ruleForm.totalNum),
+             money:Number(that.ruleForm.money)
          }).then(data => {
             console.log(data)
             if (data.errCode === '200') {

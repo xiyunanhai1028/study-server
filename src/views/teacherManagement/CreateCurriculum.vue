@@ -9,9 +9,9 @@
   <el-form-item label="课程时长" prop="courseTime">
     <el-input v-model="ruleForm.courseTime"></el-input>
   </el-form-item>
-   <el-form-item label="课程标签" prop="courseTag">
-    <el-input v-model="ruleForm.courseTag"></el-input>
-  </el-form-item>
+   <!--<el-form-item label="课程标签" prop="courseTag">-->
+    <!--<el-input v-model="ruleForm.courseTag"></el-input>-->
+  <!--</el-form-item>-->
   <el-form-item label="课程价格" prop="coursePriceYear">
     <el-input v-model="ruleForm.coursePriceYear"></el-input>
   </el-form-item>
@@ -62,38 +62,40 @@
   <!-- <div slot="tip" class="el-upload__tip">只能上传PDF格式的文件，且不超过500kb</div> -->
 </el-upload>    
 </el-form-item>  
-    <el-form-item label="课程资源" prop="">
-<el-upload
-  class="upload-demo"
-  ref="upload1"
-  action=""
-  :on-remove="handleRemove1"
-  :file-list="fileList1"
-  :on-change="handleChange1"
-  :limit="limit"
-  :auto-upload="false">
-  <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
-  <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload1">上传到服务器</el-button>
-  <!-- <div slot="tip" class="el-upload__tip">只能上传PDF格式的文件，且不超过500kb</div> -->
-</el-upload>    
-</el-form-item> 
-    <el-form-item label="" prop="">
+<!--<el-form-item label="课程资源" prop="">-->
+<!--<el-upload-->
+  <!--class="upload-demo"-->
+  <!--ref="upload1"-->
+  <!--action=""-->
+  <!--:on-remove="handleRemove1"-->
+  <!--:file-list="fileList1"-->
+  <!--:on-change="handleChange1"-->
+  <!--:limit="limit"-->
+  <!--:auto-upload="false">-->
+  <!--<el-button slot="trigger" size="small" type="primary">选取文件</el-button>-->
+  <!--<el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload1">上传到服务器</el-button>-->
+  <!--&lt;!&ndash; <div slot="tip" class="el-upload__tip">只能上传PDF格式的文件，且不超过500kb</div> &ndash;&gt;-->
+<!--</el-upload>-->
+<!--</el-form-item>-->
+
+<el-form-item label="" prop="">
       <div>添加课程小节</div>
       <div class="xiaojei-mu">
         <div v-for="(item,index) of courseCategory" :key="index" class="xiaojei-li">
-          <div class="">小节名称：{{item.name}}</div>
+          <!--<div class="">小节名称：{{item.name}}</div>-->
           <div>小节详情：{{item.detail}}</div>
           <div>小节课程资源URL：{{item.url}}</div>
         </div>
       </div>
-      </el-form-item>   
-  <el-form-item label="小节名称" prop="xiaojieName">
-    <el-input v-model="xiaojieName"></el-input>
-  </el-form-item>
+      </el-form-item>
+  <!--<el-form-item label="小节名称" prop="xiaojieName">-->
+    <!--<el-input v-model="xiaojieName"></el-input>-->
+  <!--</el-form-item>-->
   <el-form-item label="小节详情" prop="xiaojieDetail">
     <el-input v-model="xiaojieDetail"></el-input>
   </el-form-item>
-      <el-form-item label="小节课程资源" prop="">
+
+<el-form-item label="小节课程资源" prop="">
 <el-upload
   class="upload-demo"
   ref="upload2"
@@ -195,13 +197,13 @@
     methods: {
       addcourse(){
         var that = this;
-              if (that.xiaojieName === "") {
-                this.$message({
-              message: "请先输入小节名字",
-              type: 'error'
-            });        
-            return false                  
-            } 
+//              if (that.xiaojieName === "") {
+//                this.$message({
+//              message: "请先输入小节名字",
+//              type: 'error'
+//            });
+//            return false
+//            }
                if (that.xiaojieDetail === "") {
                 this.$message({
               message: "请先输入小节详情",
@@ -219,17 +221,19 @@
             console.log(this.courseCategory)
             if (this.courseCategory.length === 0) {
              this.courseCategory = [{
-              name: String(that.xiaojieName),
+//              name: String(that.xiaojieName),
               detail: String(that.xiaojieDetail),
               url: String(that.imgUrl2)
             }]               
             }else{
             this.courseCategory = [...this.courseCategory,{
-              name: String(that.xiaojieName),
+//              name: String(that.xiaojieName),
               detail: String(that.xiaojieDetail),
               url: String(that.imgUrl2)
             }]  
             }
+            that.xiaojieDetail="";
+            that.imgUrl2="";
             console.log(this.courseCategory)
       },
       submitForm(formName) {
@@ -243,13 +247,13 @@
             });        
             return false                  
             } 
-             if (that.imgUrl1 === "") {
-                this.$message({
-              message: "请先上传图片",
-              type: 'error'
-            });        
-            return false                  
-            }            
+//             if (that.imgUrl1 === "") {
+//                this.$message({
+//              message: "请先上传图片",
+//              type: 'error'
+//            });
+//            return false
+//            }
              console.log("ddddddddd")
             createCourse({
               teacherId: Number(that.userData.teacherId),
@@ -259,13 +263,13 @@
               courseDetail: String(that.ruleForm.courseDetail),
               courseNote: String(that.ruleForm.courseNote),
               courseTime: String(that.ruleForm.courseTime),
-              courseTag: String(that.ruleForm.courseTag),
+//              courseTag: String(that.ruleForm.courseTag),
               courseType: Number(that.ruleForm.courseType),
               coursePriceYear: Number(that.ruleForm.coursePriceYear),
               courseLevel: Number(that.ruleForm.courseLevel),
               courseKind: Number(that.ruleForm.courseKind),
               courseImg: String(that.imgUrl),
-              courseMediaUrl: String(that.imgUrl1),
+//              courseMediaUrl: String(that.imgUrl1),
               courseCategory: that.courseCategory
             }).then(data => {
                 console.log(data)
@@ -279,6 +283,8 @@
                     that.file = null;
                     that.ileList = [];
                     that.imgUrl = '';
+                    that.xiaojieDetail="";
+                    that.imgUrl2="";
                 } else {
                 this.$message({
                 message: data.errMsg,
@@ -401,10 +407,10 @@
       handleRemove(file, fileList) {
         this.imgUrl = '';
       },
-       handleRemove1(file, fileList) {
-        console.log(file, fileList);
-        this.imgUrl1 = '';
-      },
+//       handleRemove1(file, fileList) {
+//        console.log(file, fileList);
+//        this.imgUrl1 = '';
+//      },
       handleRemove2(file, fileList) {
         console.log(file, fileList);
         this.imgUrl2 = '';

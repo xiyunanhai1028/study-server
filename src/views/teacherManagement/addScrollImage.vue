@@ -136,7 +136,8 @@
               type: 'error'
             });        
             return false                  
-            } 
+            }
+            console.log("df",that.ScrollImageList)
             addScrollImage({images:that.ScrollImageList}).then(data => {
                 console.log(data)
                 if (data.errCode === '200') {
