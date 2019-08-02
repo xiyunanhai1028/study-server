@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-let base = 'https://www.shuoloveting.com';
+// let base = 'https://www.shuoloveting.com';
+let base = 'https://wq.juren5280.com';
 function getToken () {
   let token= ''
 if (sessionStorage.getItem('user')) {

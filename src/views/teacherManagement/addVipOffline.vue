@@ -82,6 +82,7 @@ function validateAlphabets(str) {
     methods: {
       submitForm(formName) {
         var that = this;
+        console.log("price:",that.ruleForm.money)
         this.$refs[formName].validate((valid) => {
           
           if (valid) {
