@@ -3,10 +3,10 @@
         <el-row>
             <el-col :span="10">
                 <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-                    <el-form-item label="作业名称" prop="paperName">
+                    <el-form-item label="题目名称" prop="paperName">
                         <el-input v-model="ruleForm.paperName"></el-input>
                     </el-form-item>
-                    <el-form-item label="作业类型" prop="paperType">
+                    <el-form-item label="题目类型" prop="paperType">
                         <el-select v-model="ruleForm.paperType" placeholder="">
                             <el-option label="公务员" value="1"></el-option>
                             <el-option label="事业单位" value="2"></el-option>
